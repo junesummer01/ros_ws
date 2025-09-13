@@ -10,8 +10,10 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/pointcloud_clustering.launch.py']),
+        ('share/' + package_name + '/rviz', ['rviz/pointcloud_clustering.rviz']),
     ],
-    install_requires=['setuptools', 'matplotlib'],
+    install_requires=['setuptools', 'matplotlib', 'scikit-learn', 'numpy'],
     zip_safe=True,
     maintainer='ojh',
     maintainer_email='ogane98@naver.com',
@@ -21,6 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'odometry_visualizer = pcl_processor.odometry_visualizer:main',
+            'pointcloud_clustering = pcl_processor.pointcloud_clustering:main',
         ],
     },
 )
